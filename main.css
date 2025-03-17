@@ -1,0 +1,127 @@
+/* Base Reset and Variables */
+:root {
+    color-scheme: light dark;
+    
+    /* Light Mode Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f4;
+    --bg-tertiary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --loader-color: #3498db;
+    --loader-bg: #f3f3f3;
+    
+    /* Dark Mode Colors */
+    --dark-bg-primary: #222222;
+    --dark-bg-secondary: #333333;
+    --dark-bg-tertiary: #2a2a2a;
+    --dark-text-primary: #f0f0f0;
+    --dark-text-secondary: #aaaaaa;
+    --dark-border-color: #444444;
+    --dark-loader-color: #4693ff;
+    --dark-loader-bg: #555555;
+}
+
+/* Light Theme Styles */
+body.light-theme {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.light-theme .verification-container {
+    background-color: var(--bg-secondary);
+}
+
+.light-theme .challenge-box {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+}
+
+.light-theme .verification-steps {
+    background-color: #f9f9f9;
+}
+
+.light-theme .loader {
+    border-color: var(--loader-bg);
+    border-top-color: var(--loader-color);
+}
+
+.light-theme .loading-text {
+    color: var(--text-secondary);
+}
+
+/* Dark Theme Styles (Default) */
+body {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+.verification-container {
+    background-color: var(--dark-bg-secondary);
+}
+
+.challenge-box {
+    background-color: var(--dark-bg-tertiary);
+    border-color: var(--dark-border-color);
+}
+
+.verification-steps {
+    background-color: #1e1e1e;
+}
+
+.loader {
+    border-color: var(--dark-loader-bg);
+    border-top-color: var(--dark-loader-color);
+}
+
+.loading-text {
+    color: var(--dark-text-secondary);
+}
+
+/* Shared Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.domain-name {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.loading-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.loader {
+    border: 4px solid transparent;
+    border-top: 4px solid currentColor;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Rest of the previous CSS remains the same */
