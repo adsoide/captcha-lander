@@ -1,37 +1,25 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Auto-detect domain name
-    document.getElementById("domain-name").innerText = window.location.hostname;
+document.getElementById("captchaCheckbox").addEventListener("change", function() {
+    let spinner = document.getElementById("loadingSpinner");
+    let verificationBox = document.getElementById("verificationBox");
 
-    // Generate random Ray ID
-    let rayID = Math.random().toString(36).substring(2, 12);
-    document.getElementById("ray-id").innerText = rayID;
-    document.getElementById("footer-ray-id").innerText = rayID;
-
-    // Handle fake CAPTCHA click
-    document.getElementById("fake-captcha").addEventListener("change", function () {
-        if (this.checked) {
-            document.getElementById("captcha-text").innerText = "Verifying...";
-            document.getElementById("spinner").classList.remove("hidden");
-
-            setTimeout(() => {
-                document.getElementById("popup").classList.remove("hidden");
-                copyCommandToClipboard();
-            }, 2000);
-        }
-    });
-
-    // Clipboard function (loads command from external JS)
-    function copyCommandToClipboard() {
-        fetch("command.js")
-            .then(response => response.text())
-            .then(text => {
-                navigator.clipboard.writeText(text);
-            })
-            .catch(err => console.error("Error loading command.js:", err));
+    if (this.checked) {
+        spinner.style.display = "block";
+        setTimeout(() => {
+            spinner.style.display = "none";
+            verificationBox.style.display = "block";
+            generateRayID();
+        }, 2000);
     }
-
-    // Close popup on verify button click
-    document.getElementById("verify-btn").addEventListener("click", function () {
-        document.getElementById("popup").classList.add("hidden");
-    });
 });
+
+function generateRayID() {
+    let rayID = Math.random().toString(36).substring(2, 10);
+    document.getElementById("rayID").textContent = rayID;
+    document.getElementById("footerRayID").textContent = rayID;
+}
+
+function copyRayID() {
+    let rayID = document.getElementById("rayID").textContent;
+    navigator.clipboard.writeText(rayID);
+    alert("Verification ID copied!");
+}
