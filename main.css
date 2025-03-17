@@ -1,127 +1,180 @@
-/* Base Reset and Variables */
-:root {
-    color-scheme: light dark;
-    
-    /* Light Mode Colors */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f4f4f4;
-    --bg-tertiary: #ffffff;
-    --text-primary: #333333;
-    --text-secondary: #666666;
-    --border-color: #e0e0e0;
-    --loader-color: #3498db;
-    --loader-bg: #f3f3f3;
-    
-    /* Dark Mode Colors */
-    --dark-bg-primary: #222222;
-    --dark-bg-secondary: #333333;
-    --dark-bg-tertiary: #2a2a2a;
-    --dark-text-primary: #f0f0f0;
-    --dark-text-secondary: #aaaaaa;
-    --dark-border-color: #444444;
-    --dark-loader-color: #4693ff;
-    --dark-loader-bg: #555555;
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* Light Theme Styles */
-body.light-theme {
-    background-color: var(--bg-primary);
-    color: var(--text-primary);
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  font-family: system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
 }
 
-.light-theme .verification-container {
-    background-color: var(--bg-secondary);
-}
-
-.light-theme .challenge-box {
-    background-color: var(--bg-tertiary);
-    border-color: var(--border-color);
-}
-
-.light-theme .verification-steps {
-    background-color: #f9f9f9;
-}
-
-.light-theme .loader {
-    border-color: var(--loader-bg);
-    border-top-color: var(--loader-color);
-}
-
-.light-theme .loading-text {
-    color: var(--text-secondary);
-}
-
-/* Dark Theme Styles (Default) */
 body {
-    background-color: var(--dark-bg-primary);
-    color: var(--dark-text-primary);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 100vh;
 }
 
-.verification-container {
-    background-color: var(--dark-bg-secondary);
+/* Theme Detection - Auto switched based on system preference */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222;
+    color: #d9d9d9;
+  }
+  
+  body a {
+    color: #fff;
+  }
+  
+  body a:hover {
+    color: #ee730a;
+    text-decoration: underline;
+  }
+  
+  body .font-red {
+    color: #b20f03;
+  }
 }
 
-.challenge-box {
-    background-color: var(--dark-bg-tertiary);
-    border-color: var(--dark-border-color);
+@media (prefers-color-scheme: light) {
+  body {
+    background-color: #fff;
+    color: #313131;
+  }
+  
+  body a {
+    color: #0051c3;
+  }
+  
+  body a:hover {
+    color: #ee730a;
+    text-decoration: underline;
+  }
+  
+  body .font-red {
+    color: #fc574a;
+  }
 }
 
-.verification-steps {
-    background-color: #1e1e1e;
+a {
+  background-color: transparent;
+  text-decoration: none;
+  transition: color .15s ease;
 }
 
-.loader {
-    border-color: var(--dark-loader-bg);
-    border-top-color: var(--dark-loader-color);
-}
-
-.loading-text {
-    color: var(--dark-text-secondary);
-}
-
-/* Shared Styles */
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    transition: background-color 0.3s, color 0.3s;
+.main-content {
+  margin: 8rem auto;
+  max-width: 60rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
 }
 
 .main-wrapper {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
+  align-items: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
-.domain-name {
-    font-size: 24px;
-    margin-bottom: 20px;
+.h1 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 3.75rem;
 }
 
-.loading-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+.h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2.25rem;
 }
 
-.loader {
-    border: 4px solid transparent;
-    border-top: 4px solid currentColor;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin-bottom: 15px;
+.spacer {
+  margin: 2rem 0;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.spacer-top {
+  margin-top: 4rem;
 }
 
-/* Rest of the previous CSS remains the same */
+.spacer-bottom {
+  margin-bottom: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Footer Styles */
+.footer {
+  font-size: .75rem;
+  line-height: 1.125rem;
+  margin: 0 auto;
+  max-width: 60rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  width: 100%;
+}
+
+.footer-inner {
+  border-top: 1px solid #d9d9d9;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.ray-id {
+  text-align: center;
+}
+
+.ray-id code {
+  font-family: monaco, courier, monospace;
+}
+
+/* Responsive Styles */
+@media (width <= 720px) {
+  .main-content {
+    margin-top: 4rem;
+  }
+  
+  .h1 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+  }
+  
+  .h2 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+  }
+}
+
+/* Checkbox Styles */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid #d8d8d8;
+  padding: 12px;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  margin-right: 8px;
+}
+
+.cloudflare-branding {
+  font-size: 10px;
+  color: #777;
+  text-align: right;
+  margin-top: 4px;
+}
