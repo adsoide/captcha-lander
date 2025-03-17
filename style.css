@@ -1,257 +1,145 @@
-/* Reset and Base Styles */
-* {
-    box-sizing: border-box;
+body {
+    background: #121212;
+    color: #ccc;
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
 }
 
-:root {
-    color-scheme: light dark;
-}
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.5;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* Light Mode Styles */
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #ffffff;
-        color: #313131;
-    }
-
-    .challenge-container {
-        background-color: #f4f4f4;
-        border: 1px solid #e0e0e0;
-    }
-
-    .challenge-header {
-        background: linear-gradient(45deg, #fbad41, #f63);
-        color: white;
-    }
-
-    .checkbox-label .checkmark {
-        border-color: #cccccc;
-        background-color: white;
-    }
-
-    .checkbox-label input:checked + .checkmark {
-        background-color: #0051c3;
-        border-color: #0051c3;
-    }
-}
-
-/* Dark Mode Styles */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #222222;
-        color: #d9d9d9;
-    }
-
-    .challenge-container {
-        background-color: #333333;
-        border: 1px solid #444444;
-    }
-
-    .challenge-header {
-        background: linear-gradient(45deg, #fb6b41, #f30);
-        color: white;
-    }
-
-    .checkbox-label .checkmark {
-        border-color: #666666;
-        background-color: #2a2a2a;
-    }
-
-    .checkbox-label input:checked + .checkmark {
-        background-color: #4693ff;
-        border-color: #4693ff;
-    }
-}
-
-/* Loading Spinner */
-.loading-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.loading-spinner {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-
-.lds-ring {
-    display: inline-block;
-    position: relative;
-    width: 80px;
-    height: 80px;
-}
-
-.lds-ring div {
-    box-sizing: border-box;
-    display: block;
-    position: absolute;
-    width: 64px;
-    height: 64px;
-    margin: 8px;
-    border: 8px solid #0051c3;
-    border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-    border-color: #0051c3 transparent transparent transparent;
-}
-
-.lds-ring div:nth-child(1) {
-    animation-delay: -0.45s;
-}
-
-.lds-ring div:nth-child(2) {
-    animation-delay: -0.3s;
-}
-
-.lds-ring div:nth-child(3) {
-    animation-delay: -0.15s;
-}
-
-@keyframes lds-ring {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Challenge Container */
-.challenge-container {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    overflow: hidden;
-}
-
-.challenge-header {
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.challenge-details {
-    display: flex;
-    align-items: center;
-}
-
-.challenge-icon {
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-}
-
-.challenge-icon img {
-    margin-right: 8px;
-    width: 32px;
-    height: 32px;
-}
-
-.challenge-text {
-    font-size: 18px;
-    font-weight: 500;
-}
-
-.challenge-body {
+.container {
+    max-width: 600px;
+    margin: 50px auto;
     padding: 20px;
 }
 
-/* Checkbox Styles */
-.checkbox-container {
-    display: flex;
-    justify-content: center;
-}
-
-.checkbox-wrapper {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    user-select: none;
-}
-
-.checkbox-label input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-}
-
-.checkbox-label .checkmark {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid;
-    margin-right: 10px;
-    border-radius: 4px;
-    position: relative;
-}
-
-.checkbox-label input:checked + .checkmark::after {
-    content: "✔";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 14px;
-}
-
-.checkbox-text {
-    font-size: 16px;
-}
-
-/* Core Message */
-.core-msg {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 14px;
-    max-width: 400px;
-}
-
-.zone-name-title {
-    text-align: center;
-    margin-bottom: 20px;
+/* Proper Text Size & Alignment */
+.title {
     font-size: 24px;
-    font-weight: 500;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 480px) {
-    .challenge-container {
-        width: 95%;
-        max-width: none;
-    }
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
 
-    .zone-name-title {
-        font-size: 20px;
-    }
+/* CAPTCHA Box - Now Left Aligned */
+.captcha-container {
+    display: flex;
+    align-items: center;
+    background: #222;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: left;
+}
 
-    .challenge-text {
-        font-size: 16px;
-    }
+.captcha-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.captcha-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    background: #333;
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+input[type="checkbox"]:checked + .captcha-box {
+    background: #2a7fff;
+    border: 2px solid #2a7fff;
+}
+
+.captcha-text {
+    font-size: 14px;
+}
+
+/* Cloudflare Logo */
+.cloudflare-logo {
+    height: 16px;
+    margin-left: auto;
+}
+
+/* Spinner - Now Cloudflare Accurate */
+.spinner-container {
+    display: none;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite, fadeIn 0.5s ease-in-out;
+    margin: 10px auto;
+}
+
+.verifying-text {
+    font-size: 14px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Verification Box - Aligned & Styled */
+.verification-box {
+    display: none;
+    background: #fff;
+    color: #333;
+    padding: 15px;
+    text-align: left;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Cloudflare Button */
+.verify-btn {
+    background: #ff8c00;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.ray-id {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #888;
+}
+
+.footer {
+    font-size: 12px;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
 }
