@@ -1,18 +1,23 @@
 :root {
     --bg-primary: #1a1a1a;
+    --bg-secondary: #262626;
     --text-primary: #ffffff;
     --text-secondary: #aaaaaa;
+    --accent-color: #f48120;
     --checkbox-border: #666666;
-    --popup-bg: #262626;
-    --popup-header-bg: linear-gradient(45deg, #fb6b41, #f30);
+    --popup-bg: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,31 +25,59 @@ body {
     line-height: 1.6;
 }
 
-.verification-container {
+.verification-wrapper {
     width: 100%;
-    max-width: 400px;
-    text-align: center;
+    max-width: 500px;
     padding: 20px;
+}
+
+.verification-container {
+    background-color: var(--bg-secondary);
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 .domain-name {
     font-size: 24px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color: var(--text-primary);
 }
 
-.verification-text {
-    color: var(--text-secondary);
+.loading-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
+}
+
+.cloudflare-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255,255,255,0.2);
+    border-top: 4px solid var(--accent-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: var(--text-secondary);
+    font-size: 16px;
 }
 
 .cloudflare-checkbox {
     background-color: #ffffff;
-    border-radius: 4px;
-    padding: 10px;
+    border-radius: 5px;
+    padding: 15px;
     margin-bottom: 20px;
     display: flex;
-    align-items: center;
     justify-content: center;
 }
 
@@ -53,103 +86,121 @@ body {
     align-items: center;
     color: #000;
     cursor: pointer;
-}
-
-.cloudflare-checkbox input {
-    opacity: 0;
-    position: absolute;
-}
-
-.checkmark {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    border: 2px solid var(--checkbox-border);
-    margin-right: 10px;
-    border-radius: 3px;
     position: relative;
 }
 
-.cloudflare-checkbox input:checked + .checkmark {
+.cloudflare-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-custom {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--checkbox-border);
+    border-radius: 3px;
+    margin-right: 10px;
+    position: relative;
+}
+
+.cloudflare-checkbox input:checked + label .checkbox-custom {
     background-color: #0051c3;
     border-color: #0051c3;
 }
 
-.checkmark::after {
+.checkbox-custom::after {
     content: '✔';
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(0);
     color: white;
-    display: none;
+    transition: transform 0.2s ease;
 }
 
-.cloudflare-checkbox input:checked + .checkmark::after {
-    display: block;
+.cloudflare-checkbox input:checked + label .checkbox-custom::after {
+    transform: translate(-50%, -50%) scale(1);
 }
 
 .cloudflare-logo {
+    width: 20px;
+    height: 20px;
     margin-left: 10px;
-    color: #f48120;
-    font-weight: bold;
 }
 
 .verification-popup {
     background-color: var(--popup-bg);
     border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .popup-header {
-    background: var(--popup-header-bg);
+    background: linear-gradient(45deg, #fb6b41, #f30);
     color: white;
-    padding: 10px;
-    border-radius: 4px;
+    padding: 15px;
+    border-radius: 5px;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.popup-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
 }
 
 .popup-title {
-    display: block;
+    display: flex;
+    align-items: center;
     font-size: 16px;
+    flex-grow: 1;
 }
 
 .popup-subtitle {
-    display: block;
     font-size: 14px;
-    margin-top: 5px;
+    opacity: 0.8;
 }
 
-.popup-content ol {
+.verification-steps {
     text-align: left;
     padding-left: 20px;
     margin: 15px 0;
 }
 
-.popup-content li {
+.verification-steps li {
     margin-bottom: 10px;
 }
 
-.popup-agreement {
-    margin-top: 15px;
-    color: var(--text-secondary);
-    font-size: 14px;
-}
-
 .verify-button {
-    background-color: #f48120;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     padding: 10px 20px;
-    border-radius: 4px;
-    margin-top: 15px;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.verify-button:hover {
+    background-color: #ff9f40;
 }
 
 .security-message {
     color: var(--text-secondary);
-    margin-bottom: 20px;
+    margin: 20px 0;
+    font-size: 14px;
 }
 
 .page-footer {
@@ -158,7 +209,7 @@ body {
 }
 
 .ray-id code {
-    background-color: #000;
+    background-color: #111;
     padding: 2px 5px;
     border-radius: 3px;
     font-family: monospace;
