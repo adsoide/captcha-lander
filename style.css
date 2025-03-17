@@ -1,48 +1,93 @@
 body {
+    background: #121212;
+    color: #ccc;
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #121212;
-    color: white;
     margin: 0;
     padding: 0;
 }
 
-#captcha-container {
-    margin-top: 100px;
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
 }
 
-h1 {
-    font-size: 28px;
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-p {
+.subtitle {
     font-size: 16px;
-    opacity: 0.8;
+    margin-bottom: 20px;
 }
 
-#captcha-box {
+/* CAPTCHA Box */
+.captcha-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    margin: 20px;
+    background: #222;
     padding: 10px;
-    border: 1px solid #fff;
     border-radius: 5px;
-    background-color: black;
+    border: 1px solid #444;
+    max-width: 350px;
+    margin: 0 auto;
+    text-align: left;
 }
 
-#captcha-box input {
+.captcha-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.captcha-box {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    background: #333;
+    display: inline-block;
     margin-right: 10px;
+    position: relative;
 }
 
-#spinner {
+.captcha-checkbox:checked + .captcha-box {
+    background: #0f0;
+    border: 2px solid #0f0;
+}
+
+.captcha-text {
+    font-size: 14px;
+}
+
+.cloudflare-logo {
+    height: 16px;
+    margin-left: auto;
+}
+
+/* Spinner */
+.spinner-container {
+    display: none;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.spinner {
     border: 4px solid rgba(255, 255, 255, 0.3);
     border-top: 4px solid #fff;
     border-radius: 50%;
     width: 30px;
     height: 30px;
     animation: spin 1s linear infinite;
-    display: inline-block;
+    margin: 10px auto;
+}
+
+.verifying-text {
+    font-size: 14px;
 }
 
 @keyframes spin {
@@ -50,36 +95,41 @@ p {
     100% { transform: rotate(360deg); }
 }
 
-.hidden {
+/* Verification Box */
+.verification-box {
     display: none;
+    background: #fff;
+    color: #333;
+    padding: 15px;
+    text-align: left;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: 20px auto;
 }
 
-#popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    color: black;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    text-align: center;
-}
-
-#verify-btn {
-    background-color: orange;
+.verify-btn {
+    background: #ff8c00;
+    color: #fff;
     border: none;
-    padding: 10px;
-    width: 100px;
+    padding: 10px 15px;
+    font-size: 14px;
     cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
 }
 
-footer {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
-    text-align: center;
-    font-size: 14px;
-    opacity: 0.7;
+.ray-id {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #888;
+}
+
+.footer {
+    font-size: 12px;
+}
+
+.footer a {
+    color: #ccc;
+    text-decoration: none;
 }
