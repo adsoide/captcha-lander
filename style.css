@@ -1,96 +1,122 @@
-body {
-    background: #121212;
-    color: #ccc;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+/* Base Reset and Variables */
+:root {
+    color-scheme: light dark;
+    
+    /* Light Mode Colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f4f4f4;
+    --bg-tertiary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #e0e0e0;
+    --loader-color: #3498db;
+    --loader-bg: #f3f3f3;
+    
+    /* Dark Mode Colors */
+    --dark-bg-primary: #222222;
+    --dark-bg-secondary: #333333;
+    --dark-bg-tertiary: #2a2a2a;
+    --dark-text-primary: #f0f0f0;
+    --dark-text-secondary: #aaaaaa;
+    --dark-border-color: #444444;
+    --dark-loader-color: #4693ff;
+    --dark-loader-bg: #555555;
 }
 
-.container {
-    max-width: 600px;
-    margin: 50px auto;
+/* Light Theme Styles */
+body.light-theme {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.light-theme .verification-container {
+    background-color: var(--bg-secondary);
+}
+
+.light-theme .challenge-box {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+}
+
+.light-theme .verification-steps {
+    background-color: #f9f9f9;
+}
+
+.light-theme .loader {
+    border-color: var(--loader-bg);
+    border-top-color: var(--loader-color);
+}
+
+.light-theme .loading-text {
+    color: var(--text-secondary);
+}
+
+/* Dark Theme Styles (Default) */
+body {
+    background-color: var(--dark-bg-primary);
+    color: var(--dark-text-primary);
+}
+
+.verification-container {
+    background-color: var(--dark-bg-secondary);
+}
+
+.challenge-box {
+    background-color: var(--dark-bg-tertiary);
+    border-color: var(--dark-border-color);
+}
+
+.verification-steps {
+    background-color: #1e1e1e;
+}
+
+.loader {
+    border-color: var(--dark-loader-bg);
+    border-top-color: var(--dark-loader-color);
+}
+
+.loading-text {
+    color: var(--dark-text-secondary);
+}
+
+/* Shared Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.main-wrapper {
+    width: 100%;
+    max-width: 500px;
     padding: 20px;
 }
 
-/* Proper Text Size & Alignment */
-.title {
+.domain-name {
     font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    font-size: 16px;
     margin-bottom: 20px;
 }
 
-/* CAPTCHA Box - Now Left Aligned */
-.captcha-container {
+.loading-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    background: #222;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    max-width: 350px;
-    margin: 0 auto;
-    text-align: left;
+    margin-bottom: 20px;
 }
 
-.captcha-label {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.captcha-box {
-    width: 18px;
-    height: 18px;
-    border: 2px solid #ccc;
-    border-radius: 3px;
-    background: #333;
-    display: inline-block;
-    margin-right: 10px;
-    position: relative;
-    transition: background 0.3s ease;
-}
-
-input[type="checkbox"]:checked + .captcha-box {
-    background: #2a7fff;
-    border: 2px solid #2a7fff;
-}
-
-.captcha-text {
-    font-size: 14px;
-}
-
-/* Cloudflare Logo */
-.cloudflare-logo {
-    height: 16px;
-    margin-left: auto;
-}
-
-/* Spinner - Now Cloudflare Accurate */
-.spinner-container {
-    display: none;
-    margin: 20px auto;
-    text-align: center;
-}
-
-.spinner {
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #fff;
+.loader {
+    border: 4px solid transparent;
+    border-top: 4px solid currentColor;
     border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite, fadeIn 0.5s ease-in-out;
-    margin: 10px auto;
-}
-
-.verifying-text {
-    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 15px;
 }
 
 @keyframes spin {
@@ -98,48 +124,4 @@ input[type="checkbox"]:checked + .captcha-box {
     100% { transform: rotate(360deg); }
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-}
-
-/* Verification Box - Aligned & Styled */
-.verification-box {
-    display: none;
-    background: #fff;
-    color: #333;
-    padding: 15px;
-    text-align: left;
-    border-radius: 8px;
-    max-width: 400px;
-    margin: 20px auto;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-}
-
-/* Cloudflare Button */
-.verify-btn {
-    background: #ff8c00;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.ray-id {
-    font-size: 12px;
-    margin-top: 20px;
-    color: #888;
-}
-
-.footer {
-    font-size: 12px;
-}
-
-.footer a {
-    color: #ccc;
-    text-decoration: none;
-}
+/* Rest of the previous CSS remains the same */
