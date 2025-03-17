@@ -1,0 +1,112 @@
+body {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.verification-container {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    background-color: #262626;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.loader-section {
+    margin-bottom: 20px;
+}
+
+.loader {
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    color: #aaaaaa;
+    font-size: 16px;
+}
+
+.verification-steps {
+    background-color: #333333;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.verification-steps h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #cccccc;
+}
+
+.verification-steps h3 {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #999999;
+}
+
+.verification-steps ol {
+    text-align: left;
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+.verification-steps ol li {
+    margin-bottom: 10px;
+}
+
+.agreement-section {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777777;
+}
+
+.domain-section {
+    margin-bottom: 20px;
+}
+
+.domain-section h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.domain-section p {
+    margin: 10px 0 0;
+    color: #aaaaaa;
+    font-size: 14px;
+}
+
+.footer {
+    font-size: 12px;
+    color: #666666;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+#ray-id {
+    background-color: #1a1a1a;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-family: monospace;
+}
