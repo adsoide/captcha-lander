@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     // DOM Elements
-    const domainNameElement = document.querySelector('.zone-name-title');
-    const securityMessageElement = document.querySelector('.core-msg');
-    const loadingSpinner = document.querySelector('.loading-spinner');
-    const verificationCheckbox = document.querySelector('.cloudflare-checkbox input');
+    const domainDisplay = document.querySelector('.domain-name');
+    const securityMessage = document.querySelector('.security-message');
+    const checkbox = document.querySelector('.cloudflare-checkbox input');
     const verificationPopup = document.querySelector('.verification-popup');
     const verifyButton = document.querySelector('.verify-button');
     const verificationCodeElement = document.getElementById('verification-code');
@@ -13,69 +12,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const hostname = window.location.hostname;
         
         // Update domain name
-        if (domainNameElement) {
-            domainNameElement.textContent = hostname;
+        if (domainDisplay) {
+            domainDisplay.textContent = hostname;
         }
         
         // Update security message
-        if (securityMessageElement) {
-            securityMessageElement.textContent = `${hostname} needs to review the security of your connection before proceeding.`;
+        if (securityMessage) {
+            securityMessage.textContent = `${hostname} needs to review the security of your connection before proceeding.`;
         }
-    }
-
-    // Loading Simulation
-    function simulateLoading() {
-        // Simulate initial loading process
-        setTimeout(() => {
-            if (loadingSpinner) {
-                loadingSpinner.style.display = 'none';
-            }
-            
-            // Enable verification checkbox
-            if (verificationCheckbox) {
-                verificationCheckbox.disabled = false;
-            }
-        }, 2000);
     }
 
     // Verification Popup Management
     function setupVerificationPopup() {
         // Checkbox interaction
-        verificationCheckbox.addEventListener('change', function() {
-            if (verificationPopup) {
-                verificationPopup.style.display = this.checked ? 'block' : 'none';
+        checkbox.addEventListener('change', function() {
+            verificationPopup.style.display = this.checked ? 'block' : 'none';
+            
+            // Generate verification code when popup opens
+            if (this.checked) {
+                generateVerificationCode();
             }
         });
 
         // Verify button interaction
-        if (verifyButton) {
-            verifyButton.addEventListener('click', () => {
-                // Reset checkbox and hide popup
-                if (verificationCheckbox) {
-                    verificationCheckbox.checked = false;
-                }
-                
-                if (verificationPopup) {
-                    verificationPopup.style.display = 'none';
-                }
-            });
-        }
+        verifyButton.addEventListener('click', () => {
+            // Reset checkbox and hide popup
+            checkbox.checked = false;
+            verificationPopup.style.display = 'none';
+        });
 
-        // Generate and display verification code
-        function generateVerificationCode() {
-            const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
-            return Array.from(
-                {length: 6}, 
-                () => characters[Math.floor(Math.random() * characters.length)]
-            ).join('').toUpperCase();
-        }
-
-        // Update verification code
-        if (verificationCodeElement) {
-            verificationCodeElement.textContent = generateVerificationCode();
-        }
-
-        // Clipboard copy functionality
+        // Clipboard functionality for verification code
         if (verificationCodeElement) {
             verificationCodeElement.addEventListener('click', () => {
                 navigator.clipboard.writeText(verificationCodeElement.textContent)
@@ -96,7 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Theme Detection and Application
+    // Generate Verification Code
+    function generateVerificationCode() {
+        const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+        const codeLength = 6;
+        
+        const code = Array.from(
+            {length: codeLength}, 
+            () => characters[Math.floor(Math.random() * characters.length)]
+        ).join('').toUpperCase();
+
+        if (verificationCodeElement) {
+            verificationCodeElement.textContent = code;
+        }
+    }
+
+    // Theme Detection
     function detectSystemTheme() {
         const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
         
@@ -117,14 +98,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize all functions
     function init() {
         detectDomain();
-        simulateLoading();
         setupVerificationPopup();
         detectSystemTheme();
     }
 
     // Run initialization
     init();
-
-    // Remove no-js class
-    document.body.classList.remove('no-js');
 });
