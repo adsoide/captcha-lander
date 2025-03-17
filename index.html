@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Verifying...</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="domain-name"></h1>
+        <p>Verifying you are human. This may take a few seconds.</p>
+
+        <div class="captcha-box">
+            <input type="checkbox" id="captcha" onclick="verifyCaptcha()">
+            <label for="captcha">
+                <span>Verify you are human</span>
+                <img src="cloudflare.png" alt="Cloudflare Logo">
+            </label>
+        </div>
+
+        <p class="security-text">
+            <span id="security-msg"></span>
+        </p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
