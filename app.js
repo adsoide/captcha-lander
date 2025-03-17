@@ -1,42 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Dynamic Domain Detection
-    function detectDomain() {
-        const domainElement = document.getElementById('domain-name');
-        const verificationIdElement = document.querySelector('.verification-id');
-        
-        // Get current hostname
-        const hostname = window.location.hostname;
-        
-        // Update domain name
-        if (domainElement) {
-            domainElement.textContent = hostname;
-        }
-        
-        // Generate a random verification ID
-        if (verificationIdElement) {
-            const randomId = Math.random().toString(36).substring(2, 8).toUpperCase();
-            verificationIdElement.textContent += ` Cloudflare Verification ID: ${randomId}`;
-        }
-    }
+    const checkbox = document.querySelector('.cloudflare-checkbox input');
+    const verificationPopup = document.querySelector('.verification-popup');
+    const verifyButton = document.querySelector('.verify-button');
 
-    // Simulate Verification Process
-    function simulateVerification() {
-        const loaderSection = document.querySelector('.loader-section');
-        const verificationSteps = document.querySelector('.verification-steps');
-        
-        // Simulated verification stages
+    // Simulate loading process
+    function simulateLoading() {
+        const domainName = document.querySelector('.domain-name');
+        const verificationText = document.querySelector('.verification-text');
+        const cloudflareCheckbox = document.querySelector('.cloudflare-checkbox');
+
+        // Mimic Cloudflare loading animation
         setTimeout(() => {
-            loaderSection.style.display = 'none';
-            verificationSteps.style.display = 'block';
+            cloudflareCheckbox.style.display = 'block';
         }, 2000);
     }
 
-    // Initialize functions
-    function init() {
-        detectDomain();
-        simulateVerification();
-    }
+    // Checkbox interaction
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            verificationPopup.style.display = 'block';
+        } else {
+            verificationPopup.style.display = 'none';
+        }
+    });
 
-    // Run initialization
-    init();
+    // Verify button interaction
+    verifyButton.addEventListener('click', function() {
+        // Simulated verification process
+        checkbox.checked = false;
+        verificationPopup.style.display = 'none';
+    });
+
+    // Initialize loading simulation
+    simulateLoading();
 });
